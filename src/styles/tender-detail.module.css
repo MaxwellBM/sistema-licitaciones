@@ -1,0 +1,497 @@
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: white;
+}
+
+.backLink svg {
+  width: 20px;
+  height: 20px;
+}
+
+.tenderHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tenderTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.badge {
+  display: inline-flex;
+  padding: 0.25rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badgeActiva {
+  background: rgba(16, 185, 129, 0.12);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badgePorCobrar {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.badgePerdida {
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.badgeFinalizada {
+  background: rgba(139, 92, 246, 0.12);
+  color: #c4b5fd;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.error {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: rgba(251, 113, 133, 0.9);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sideCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+}
+
+.cardHeader {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardHeader h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.cardBody {
+  padding: 1.5rem;
+}
+
+.description {
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.metaLabel {
+  color: rgba(255,255,255,0.3);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.metaValue {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.activeIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #6ee7b7;
+}
+
+.activeDot {
+  width: 8px;
+  height: 8px;
+  background: #6ee7b7;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.emptyProducts {
+  text-align: center;
+  padding: 2rem 0;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.9rem;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #93c5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  transition: background 0.2s;
+}
+
+.table tbody tr:hover {
+  background: rgba(255,255,255,0.025);
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.65);
+}
+
+.table td:first-child {
+  font-weight: 500;
+  color: white;
+}
+
+.subtotalCell {
+  font-weight: 600;
+  color: white !important;
+}
+
+.skuTag {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: rgba(255,255,255,0.4);
+}
+
+.productForm {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.productFormTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.productRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .productRow {
+    flex-direction: row;
+  }
+}
+
+.productSelect {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.productSelect:focus {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
+}
+
+.productSelect option {
+  background: #0a0e27;
+  color: white;
+}
+
+.qtyInput {
+  width: 100px;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.qtyInput:focus {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
+}
+
+.addBtn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.addBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.addBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.subtotal {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.subtotalValue {
+  color: #93c5fd;
+  font-weight: 500;
+}
+
+/* Budget card */
+.budgetRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.budgetLabel {
+  color: rgba(255,255,255,0.4);
+}
+
+.budgetValue {
+  color: white;
+  font-weight: 600;
+}
+
+.available {
+  color: #6ee7b7;
+  font-weight: 600;
+}
+
+.availableOver {
+  color: #fca5a5;
+  font-weight: 600;
+}
+
+.budgetBar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.budgetFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.budgetFillOk {
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+}
+
+.budgetFillOver {
+  background: linear-gradient(90deg, #ef4444, #f97316);
+}
+
+.budgetPct {
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+.budgetPctOk {
+  color: rgba(255,255,255,0.35);
+}
+
+.budgetPctOver {
+  color: #fca5a5;
+}
+
+/* Client card */
+.clientField {
+  margin-bottom: 0.75rem;
+}
+
+.clientField:last-child {
+  margin-bottom: 0;
+}
+
+.clientLabel {
+  color: rgba(255,255,255,0.3);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.clientValue {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Status card */
+.statusCurrent {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.75rem;
+}
+
+.statusCurrent strong {
+  color: white;
+}
+
+.statusBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statusBtn {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.statusBtn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+/* Not found */
+.notFound {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.notFoundText {
+  color: rgba(255,255,255,0.35);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+.spinnerCircle {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(59, 130, 246, 0.15);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,35 @@
+{
+  "version": "6.8.2",
+  "steps": [
+    {
+      "tag": "CreateEnum",
+      "enum": "Role",
+      "values": ["admin", "user"]
+    },
+    {
+      "tag": "CreateEnum",
+      "enum": "TenderStatus",
+      "values": ["activa", "por_cobrar", "perdida", "finalizada"]
+    },
+    {
+      "tag": "CreateTable",
+      "table": "users"
+    },
+    {
+      "tag": "CreateTable",
+      "table": "clients"
+    },
+    {
+      "tag": "CreateTable",
+      "table": "products"
+    },
+    {
+      "tag": "CreateTable",
+      "table": "tenders"
+    },
+    {
+      "tag": "CreateTable",
+      "table": "tender_products"
+    }
+  ]
+}
