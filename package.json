@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "vercel-build": "rm -rf .next && next build",
     "postinstall": "prisma generate"
   },
   "prisma": {
