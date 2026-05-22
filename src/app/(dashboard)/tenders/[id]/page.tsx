@@ -257,7 +257,7 @@ export default function TenderDetailPage() {
                     </button>
                   </div>
                   {selectedProduct && (
-                    <div className={styles.subtotal}>
+                    <div className={styles.subtotalInfo}>
                       Subtotal: <span className={styles.subtotalValue}>
                         ${(Number(products.find(p => p.id === parseInt(selectedProduct))?.unitPrice || 0) * parseInt(quantity || '0')).toFixed(2)}
                       </span>

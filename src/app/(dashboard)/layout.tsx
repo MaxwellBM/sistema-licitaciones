@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useTheme } from '@/lib/theme-provider'
 import styles from '@/styles/sidebar.module.css'
 
 interface User {
@@ -22,6 +24,7 @@ const navItems = [
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const pathname = usePathname()
+  const { theme, toggle } = useTheme()
   const [user, setUser] = useState<User | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -46,14 +49,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const isActive = (href: string) => pathname === href
 
   return (
-    <div className="min-h-screen flex">
+    <div className={styles.layout}>
       <aside className={`${styles.sidebar} ${sidebarOpen ? styles.open : ''}`}>
         <div className={styles.brand}>
           <div className={styles.brandInner}>
             <div className={styles.brandIcon}>
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+              <Image src="/images/Logo2_color_wb_edited.avif" alt="Logo" width={42} height={42} style={{ objectFit: 'contain' }} />
             </div>
             <div>
               <div className={styles.brandName}>Licitaciones</div>
@@ -89,12 +90,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <div className={styles.userRole}>{user.role === 'admin' ? 'Administrador' : 'Usuario'}</div>
             </div>
           </div>
-          <button onClick={handleLogout} className={styles.logoutBtn}>
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
-            Cerrar Sesión
-          </button>
+          <div className={styles.btnRow}>
+            <button onClick={handleLogout} className={styles.logoutBtn} title="Cerrar sesión">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              Salir
+            </button>
+            <button onClick={toggle} className={styles.themeBtn} title="Cambiar tema">
+              {theme === 'dark' ? (
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              ) : (
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              )}
+              {theme === 'dark' ? 'Claro' : 'Oscuro'}
+            </button>
+          </div>
         </div>
       </aside>
 
@@ -107,12 +122,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </button>
           <div className={styles.mobileBrand}>
             <div className={styles.mobileBrandIcon}>
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+              <Image src="/images/Logo2_color_wb_edited.avif" alt="Logo" width={32} height={32} style={{ objectFit: 'contain' }} />
             </div>
             <span className={styles.mobileBrandName}>Licitaciones</span>
           </div>
+          <button onClick={toggle} className={styles.menuBtn} title="Cambiar tema">
+            {theme === 'dark' ? (
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ width: 20, height: 20 }}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            ) : (
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ width: 20, height: 20 }}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
+          </button>
         </div>
 
         <main className={styles.main}>

@@ -1,3 +1,31 @@
+/**
+ * @swagger
+ * /api/tenders:
+ *   get:
+ *     summary: Listar licitaciones
+ *     tags: [Tenders]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [activa, por_cobrar, perdida, finalizada]
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Lista paginada de licitaciones
+ *       401:
+ *         description: Sin token
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/permissions'
@@ -47,6 +75,43 @@ export async function GET(request: NextRequest) {
   })
 }
 
+/**
+ * @swagger
+ * /api/tenders:
+ *   post:
+ *     summary: Crear licitación
+ *     tags: [Tenders]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [title, maxBudget, clientId]
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               maxBudget:
+ *                 type: number
+ *                 minimum: 0.01
+ *               clientId:
+ *                 type: integer
+ *               startDate:
+ *                 type: string
+ *                 format: date
+ *               endDate:
+ *                 type: string
+ *                 format: date
+ *     responses:
+ *       201:
+ *         description: Licitación creada con status activa
+ *       422:
+ *         description: Error de validación
+ */
 export async function POST(request: NextRequest) {
   const auth = requireAuth(request)
   if (auth instanceof NextResponse) return auth

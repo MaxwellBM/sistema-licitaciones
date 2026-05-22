@@ -1,3 +1,23 @@
+/**
+ * @swagger
+ * /api/tenders/{id}:
+ *   get:
+ *     summary: Detalle de licitación con productos
+ *     tags: [Tenders]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Detalle de licitación
+ *       404:
+ *         description: Licitación no encontrada
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/permissions'

@@ -6,36 +6,37 @@
   padding: 1rem;
   position: relative;
   overflow: hidden;
+  background: var(--bg-primary);
 }
 
 .container::before {
   content: '';
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
-  top: -100px;
-  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
+  top: -150px;
+  right: -150px;
   border-radius: 50%;
-  animation: floatSlow 8s ease-in-out infinite;
+  animation: floatSlow 10s ease-in-out infinite;
 }
 
 .container::after {
   content: '';
   position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%);
-  bottom: -80px;
-  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%);
+  bottom: -100px;
+  left: -100px;
   border-radius: 50%;
-  animation: floatSlow 10s ease-in-out infinite reverse;
+  animation: floatSlow 12s ease-in-out infinite reverse;
 }
 
 @keyframes floatSlow {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
+  33% { transform: translate(40px, -40px) scale(1.08); }
+  66% { transform: translate(-30px, 30px) scale(0.95); }
 }
 
 .wrapper {
@@ -51,55 +52,70 @@
 }
 
 .logo {
-  width: 72px;
-  height: 72px;
+  width: 140px;
+  height: 140px;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, #3b82f6, #7c3aed);
-  border-radius: 20px;
+  border-radius: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+  overflow: hidden;
+  box-shadow: 0 0 60px var(--accent-glow);
   animation: pulseGlow 3s ease-in-out infinite;
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.3); }
-  50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.5); }
-}
-
-.logo svg {
-  width: 36px;
-  height: 36px;
-  color: white;
+  0%, 100% { box-shadow: 0 0 40px var(--accent-glow); }
+  50% { box-shadow: 0 0 70px var(--accent-glow); }
 }
 
 .title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  color: rgba(255,255,255,0.5);
+  color: var(--text-muted);
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
 
 .card {
-  background: rgba(255,255,255,0.04);
+  position: relative;
+  background: var(--bg-card);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 24px;
-  padding: 2rem;
+  padding: 2.25rem;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.05),
-    0 20px 60px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.05);
+    0 0 0 1px rgba(255,255,255,0.03),
+    0 20px 60px rgba(0,0,0,0.15),
+    var(--shadow-card);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: var(--border-gradient);
+  background-size: 200% 200%;
+  animation: shimmerBorder 4s ease-in-out infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes shimmerBorder {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .form {
@@ -110,38 +126,39 @@
 
 .field label {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.6);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
 }
 
 .input {
   width: 100%;
   padding: 0.85rem 1rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  color: white;
+  background: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: 14px;
+  color: var(--text-primary);
   font-size: 0.95rem;
   transition: all 0.2s;
   outline: none;
 }
 
 .input::placeholder {
-  color: rgba(255,255,255,0.25);
+  color: var(--text-muted);
 }
 
 .input:focus {
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  background: rgba(255,255,255,0.06);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: var(--bg-input-focus);
 }
 
 .error {
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  color: rgba(251, 113, 133, 0.9);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--danger-text);
   padding: 0.75rem 1rem;
   border-radius: 12px;
   font-size: 0.85rem;
@@ -149,26 +166,27 @@
 
 .submitBtn {
   width: 100%;
-  padding: 0.85rem;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  padding: 0.9rem;
+  background: var(--accent-gradient);
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s;
   position: relative;
   overflow: hidden;
+  letter-spacing: 0.01em;
 }
 
 .submitBtn::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.15), transparent);
   transform: translateX(-100%);
-  transition: transform 0.5s;
+  transition: transform 0.6s;
 }
 
 .submitBtn:hover::before {
@@ -176,19 +194,24 @@
 }
 
 .submitBtn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.submitBtn:active {
+  transform: translateY(0);
 }
 
 .submitBtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 .demo {
   text-align: center;
   margin-top: 1.5rem;
-  color: rgba(255,255,255,0.3);
+  color: var(--text-muted);
   font-size: 0.8rem;
 }

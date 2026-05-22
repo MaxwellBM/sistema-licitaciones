@@ -1,17 +1,22 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
 .sidebar {
   position: fixed;
   inset: 0;
   right: auto;
   width: 260px;
   z-index: 50;
-  background: rgba(10, 14, 39, 0.95);
+  background: var(--bg-sidebar);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
-  border-right: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   transform: translateX(-100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
 }
 
 .sidebar.open {
@@ -27,46 +32,43 @@
 
 .brand {
   padding: 1.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .brandInner {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .brandIcon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #3b82f6, #7c3aed);
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-}
-
-.brandIcon svg {
-  width: 20px;
-  height: 20px;
-  color: white;
+  overflow: hidden;
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .brandName {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: white;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .brandSub {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.35);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .nav {
   flex: 1;
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -76,42 +78,58 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 1rem;
   border-radius: 12px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-muted);
   text-decoration: none;
   transition: all 0.2s;
-}
-
-.navItem:hover {
-  color: white;
-  background: rgba(255,255,255,0.04);
-}
-
-.navItem.active {
-  color: #93c5fd;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  position: relative;
 }
 
 .navItem svg {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.navItem:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.navItem.active {
+  color: var(--text-accent);
+  background: var(--accent-glow);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.navItem.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 0 3px 3px 0;
 }
 
 .footer {
   padding: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .userInfo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
 }
 
 .avatar {
@@ -123,59 +141,75 @@
   justify-content: center;
   font-size: 0.85rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  background: var(--accent-gradient);
   color: white;
   flex-shrink: 0;
+  box-shadow: 0 0 12px var(--accent-glow);
 }
 
 .userName {
   font-size: 0.85rem;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .userRole {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.35);
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
-.logoutBtn {
-  width: 100%;
+.btnRow {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.logoutBtn,
+.themeBtn {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1rem;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.4);
-  background: none;
-  border: none;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .logoutBtn:hover {
-  color: rgba(251, 113, 133, 0.8);
-  background: rgba(239, 68, 68, 0.08);
+  color: var(--danger-text);
+  border-color: var(--danger-border);
+  background: var(--danger-bg);
 }
 
-.logoutBtn svg {
-  width: 16px;
-  height: 16px;
+.themeBtn:hover {
+  color: var(--text-accent);
+  border-color: rgba(59, 130, 246, 0.2);
+  background: var(--accent-glow);
+}
+
+.logoutBtn svg,
+.themeBtn svg {
+  width: 15px;
+  height: 15px;
 }
 
 .mobileHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  background: rgba(10, 14, 39, 0.8);
+  padding: 0.75rem 1rem;
+  background: var(--bg-sidebar);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--border-color);
 }
 
 @media (min-width: 1024px) {
@@ -185,7 +219,7 @@
 }
 
 .menuBtn {
-  color: white;
+  color: var(--text-primary);
   padding: 0.5rem;
   background: none;
   border: none;
@@ -195,7 +229,7 @@
 }
 
 .menuBtn:hover {
-  background: rgba(255,255,255,0.05);
+  background: var(--bg-card);
 }
 
 .menuBtn svg {
@@ -216,26 +250,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #3b82f6, #7c3aed);
-}
-
-.mobileBrandIcon svg {
-  width: 16px;
-  height: 16px;
-  color: white;
+  overflow: hidden;
 }
 
 .mobileBrandName {
   font-size: 0.85rem;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 .overlay {
   position: fixed;
   inset: 0;
   z-index: 40;
-  background: rgba(0,0,0,0.5);
+  background: var(--bg-overlay);
 }
 
 @media (min-width: 1024px) {
@@ -249,7 +277,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-primary);
 }
 
 @media (min-width: 1024px) {

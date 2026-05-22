@@ -1,3 +1,34 @@
+/**
+ * @swagger
+ * /api/tenders/{id}/status:
+ *   patch:
+ *     summary: Cambiar estado de licitación
+ *     tags: [Tenders]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [status]
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 enum: [por_cobrar, perdida, finalizada]
+ *     responses:
+ *       200:
+ *         description: Estado actualizado
+ *       422:
+ *         description: Transición de estado inválida
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/permissions'

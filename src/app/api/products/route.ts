@@ -1,3 +1,17 @@
+/**
+ * @swagger
+ * /api/products:
+ *   get:
+ *     summary: Listar productos
+ *     tags: [Products]
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de productos
+ *       401:
+ *         description: Sin token
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth, requireAdmin } from '@/lib/permissions'
@@ -17,6 +31,38 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({ data: products })
 }
 
+/**
+ * @swagger
+ * /api/products:
+ *   post:
+ *     summary: Crear producto
+ *     tags: [Products]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [name, sku, unitPrice, description]
+ *             properties:
+ *               name:
+ *                 type: string
+ *               sku:
+ *                 type: string
+ *               unitPrice:
+ *                 type: number
+ *               description:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Producto creado
+ *       403:
+ *         description: Sin permisos de admin
+ *       422:
+ *         description: SKU duplicado o error de validación
+ */
 export async function POST(request: NextRequest) {
   const auth = requireAdmin(request)
   if (auth instanceof NextResponse) return auth

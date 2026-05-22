@@ -1,3 +1,38 @@
+/**
+ * @swagger
+ * /api/tenders/{id}/products:
+ *   post:
+ *     summary: Agregar producto a licitación
+ *     tags: [Tenders]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [productId, quantity]
+ *             properties:
+ *               productId:
+ *                 type: integer
+ *               quantity:
+ *                 type: integer
+ *                 minimum: 1
+ *     responses:
+ *       201:
+ *         description: Producto agregado, totalAmount actualizado
+ *       422:
+ *         description: >
+ *           Posibles errores: licitación no activa, presupuesto excedido,
+ *           producto duplicado
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/permissions'

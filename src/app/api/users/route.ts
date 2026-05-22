@@ -1,3 +1,19 @@
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Listar usuarios
+ *     tags: [Users]
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios
+ *       401:
+ *         description: Sin token
+ *       403:
+ *         description: Sin permisos de admin
+ */
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/prisma'
@@ -22,6 +38,39 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({ data: users })
 }
 
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Crear usuario
+ *     tags: [Users]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [name, email, password, role]
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               role:
+ *                 type: string
+ *                 enum: [admin, user]
+ *     responses:
+ *       201:
+ *         description: Usuario creado
+ *       403:
+ *         description: Sin permisos de admin
+ *       422:
+ *         description: Email duplicado u otro error de validación
+ */
 export async function POST(request: NextRequest) {
   const auth = requireAdmin(request)
   if (auth instanceof NextResponse) return auth

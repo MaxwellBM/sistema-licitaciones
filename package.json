@@ -17,8 +17,10 @@
     "bcryptjs": "^3.0.3",
     "jsonwebtoken": "^9.0.3",
     "next": "14.2.35",
+    "next-swagger-doc": "^0.4.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swagger-ui-react": "^5.32.6"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -35,6 +37,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/swagger-ui-react": "^5.18.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",

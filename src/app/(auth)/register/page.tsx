@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import styles from '@/styles/login.module.css'
 
 export default function RegisterPage() {
@@ -47,9 +48,7 @@ export default function RegisterPage() {
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <div className={styles.logo}>
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
+            <Image src="/images/Logo2_color_wb_edited.avif" alt="Logo" width={140} height={140} style={{ objectFit: 'contain' }} />
           </div>
           <h1 className={styles.title}>Crear Cuenta</h1>
           <p className={styles.subtitle}>Regístrate para usar el sistema</p>
