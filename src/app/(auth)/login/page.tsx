@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import Image from 'next/image'
 import styles from '@/styles/login.module.css'
 
@@ -76,12 +75,7 @@ export default function LoginPage() {
         </div>
 
         <p className={styles.demo}>Demo: admin@csc.com / admin123</p>
-        <p className={styles.demo} style={{ marginTop: '0.5rem' }}>
-          ¿No tenés cuenta?{' '}
-          <Link href="/register" style={{ color: '#60a5fa', textDecoration: 'none', fontWeight: 500 }}>
-            Registrarse
-          </Link>
-        </p>
+
       </div>
     </div>
   )
