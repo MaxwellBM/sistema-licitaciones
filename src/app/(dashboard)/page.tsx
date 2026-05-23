@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import styles from '@/styles/dashboard.module.css'
 
+export const dynamic = 'force-dynamic'
+
 interface TenderProduct {
   id: number
   productId: number

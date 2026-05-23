@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import shared from '@/styles/shared.module.css'
 
+export const dynamic = 'force-dynamic'
+
 interface Client {
   id: number
   name: string

@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import styles from '@/styles/tender-new.module.css'
 
+export const dynamic = 'force-dynamic'
+
 interface Client {
   id: number
   name: string

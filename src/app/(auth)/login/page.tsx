@@ -6,6 +6,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '@/styles/login.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
